@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.x" type="plugin" group="system" method="upgrade">
+	<name>plg_system_oauthlogin</name>
+	<author>Alexandr Kosarev</author>
+	<creationDate>November 2016</creationDate>
+	<copyright>Copyright (C) JoomPlace, www.joomplace.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>alexandr@kosarev.by</authorEmail>
+	<authorUrl>www.joomplace.com</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_SYSTEM_OAUTHLOGIN_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="oauthlogin">oauthlogin.php</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_oauthlogin.ini</language>
+		<language tag="en-GB">en-GB.plg_system_oauthlogin.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					type="text"
+					name="clientid"
+					label="PLG_SYSTEM_OAUTHLOGIN_CLIENTID_LABEL"
+					description="PLG_SYSTEM_OAUTHLOGIN_CLIENTID_DESC"
+					required="true"
+				/>
+				<field
+					type="text"
+					name="clientsecret"
+					label="PLG_SYSTEM_OAUTHLOGIN_CLIENTSECRET_LABEL"
+					description="PLG_SYSTEM_OAUTHLOGIN_CLIENTSECRET_DESC"
+					required="true"
+				/>
+				<field
+					type="url"
+					name="redirecturi"
+					label="PLG_SYSTEM_OAUTHLOGIN_REDIRECTURI_LABEL"
+					description="PLG_SYSTEM_OAUTHLOGIN_REDIRECTURI_DESC"
+					required="true"
+				/>
+				<field
+					type="spacer"
+					name="spacer"
+					hr="true"
+				/>
+				<field
+					name="implicitloginallowed"
+					type="radio"
+					label="PLG_SYSTEM_OAUTHLOGIN_IMPLICITLOGIN_LABEL"
+					description="PLG_SYSTEM_OAUTHLOGIN_IMPLICITLOGIN_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="registrationallowed"
+					type="radio"
+					label="PLG_SYSTEM_OAUTHLOGIN_AUTOREGISTER_LABEL"
+					description="PLG_SYSTEM_OAUTHLOGIN_AUTOREGISTER_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
