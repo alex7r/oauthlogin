@@ -180,7 +180,7 @@ class PlgSystemOAuthLogin extends JPlugin
 			$doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 			$doc->addScriptDeclaration("
 				jQuery(document).ready(function($){
-					$('input[name=\"task\"][value=\"user.login\"]')
+					$('input[name=\"task\"][value=\"user.login\"], form[action*=\"task=user.login\"] > :first-child')
 					.closest('form').find('input[type=\"submit\"],button[type=\"submit\"]')
 					.after('".$html."');
 				});
