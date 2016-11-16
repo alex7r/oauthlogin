@@ -59,9 +59,9 @@ class PlgSystemOAuthLogin extends JPlugin
 			$oauth_client->setOption('client_id','token');
 			$oauth_client->setOption('scope',array('email','profile'));
 			$oauth_client->setOption('requestparams',array('state'=>'jauth','task'=>JFactory::getApplication()->input->get('task',null),'access_type'=>'offline'));
-			$oauth_client->setOption('clientid',$this->params->get('clientid','1038114980199-6r66u766mmkv64np7r4a78t38tpi2ooe.apps.googleusercontent.com'));
-			$oauth_client->setOption('clientsecret',$this->params->get('clientsecret','dFbKrAonTaokPPq9PX94ttV8'));
-			$oauth_client->setOption('redirecturi',$this->params->get('redirecturi','http://seoclick.webface.by'));
+			$oauth_client->setOption('clientid',$this->params->get('clientid',false));
+			$oauth_client->setOption('clientsecret',$this->params->get('clientsecret',false));
+			$oauth_client->setOption('redirecturi',$this->params->get('redirecturi',false));
 			$oauth_client->setOption('authurl','https://accounts.google.com/o/oauth2/v2/auth');
 			$oauth_client->setOption('tokenurl','https://www.googleapis.com/oauth2/v4/token');
 			$oauth_client->authenticate();
@@ -173,7 +173,7 @@ class PlgSystemOAuthLogin extends JPlugin
 			$doc->addScriptDeclaration($script);
 
 			ob_start();
-			?><input name="jauth" type="hidden" value=""/><button class="btn btn-danger jauth_button"><i class="fa fa-google"> </i> Login</button><?php
+			?><input name="jauth" type="hidden" value=""/> <button class="btn btn-danger jauth_button"><i class="fa fa-google"> </i> Login</button><?php
 			$html = ob_get_contents();
 			ob_end_clean();
 			$html = addcslashes($html,"'\"");
