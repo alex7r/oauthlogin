@@ -133,7 +133,21 @@ class PlgSystemOAuthLogin extends JPlugin
 			$response->status        = JAuthentication::STATUS_FAILURE;
 			return;
 		}else{
-			$response->username = $credentials['email'];
+			if(!JUserHelper::getUserId($credentials['email'])){
+				$db = JFactory::getDbo();
+				$query = $db->getQuery(true);
+				$query->select($db->qn(array('id', 'username')))
+					->from($db->qn('#__users'))
+					->where($db->qn('email').'='.$db->q($credentials['email']));
+				$ud = $db->setQuery($query)->loadObject();
+				if($ud->id){
+					$response->username = $ud->username;
+				}else{
+					$response->username = $credentials['email'];
+				}
+			}else{
+				$response->username = $credentials['email'];
+			}
 			$response->email    = $credentials['email'];
 			$response->fullname = $credentials['name'];
 			$response->params   = json_encode(array('link'=>$credentials['link']));
